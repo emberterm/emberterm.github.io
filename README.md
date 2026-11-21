@@ -1,7 +1,7 @@
 # emberterm-web
 
 Landing page for [EmberTerm](https://github.com/emberterm/emberterm), an open source terminal for Windows and macOS.
-Live at https://emberterm.arifintahu.com.
+Live at https://emberterm.github.io.
 
 Static [Astro](https://astro.build) site. No analytics or trackers; the only external request from the page is Google Fonts.
 
@@ -22,20 +22,21 @@ pnpm build    # static output in dist/
 `.exe`, `.msi` and `.dmg` download URLs and installer sizes from it. The build fails if one of those assets is missing
 from the release. If the API is unreachable, it uses the pinned `FALLBACK_VERSION` and hides the sizes.
 
-The site only picks up a new release when it is rebuilt, so redeploy after each release.
+The site only picks up a new release when it is rebuilt (see below).
 
-## Deploy (Vercel)
+## Deploy (GitHub Pages)
 
-```bash
-vercel deploy --prod
-```
+This repo is `emberterm/emberterm.github.io`, the organization site, served from the root. `.github/workflows/deploy.yml`
+builds and publishes `dist/` on:
 
-Environment variables (Vercel, Production):
+- a push to `main`;
+- a `release-published` dispatch, sent by the Release workflow in `emberterm/emberterm` once every installer is uploaded
+  (pre-releases skip it);
+- a daily run, as a backstop if a dispatch is missed;
+- a manual run (Actions → Deploy → Run workflow).
 
-| Name | Purpose |
-|---|---|
-| `GITHUB_TOKEN` | Optional. A classic token with no scopes; only raises the GitHub API rate limit during the build. |
-| `SITE_URL` | Public site URL, used for absolute Open Graph URLs. Falls back to `VERCEL_PROJECT_PRODUCTION_URL`. |
+Setup, once: Settings → Pages → Source: GitHub Actions. The dispatch needs the secret `SITE_DISPATCH_TOKEN` in
+`emberterm/emberterm`: a fine-grained token limited to this repo with Contents: read and write.
 
 ## Structure
 

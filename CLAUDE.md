@@ -1,13 +1,14 @@
 # EmberTerm website
 
 Static landing page for https://github.com/emberterm/emberterm (open source Windows terminal; macOS builds too).
-Live at https://emberterm.arifintahu.com (Vercel, project `emberterm-web`).
+Live at https://emberterm.github.io (GitHub Pages; this repo is `emberterm/emberterm.github.io`).
 
 Stack: Astro 7, static output, TypeScript, pnpm. Two small vanilla scripts for the live demos; no UI framework.
 
 ## Commands
 - `pnpm dev` · `pnpm build` · `pnpm check` (astro check; must be 0 errors before committing)
-- Deploy: `vercel deploy --prod --scope miftahul-arifins-projects` (not linked to Git; pushing does not deploy)
+- Deploy: `.github/workflows/deploy.yml` runs on push to `main`, on the `release-published` dispatch from the emberterm
+  Release workflow, daily, and manually. No local deploy command.
 
 ## Layout
 - `src/release.ts`: single source of truth for the version. Fetches the latest GitHub release at build time, derives
@@ -23,7 +24,7 @@ Stack: Astro 7, static output, TypeScript, pnpm. Two small vanilla scripts for t
 - Colors and spacing via CSS variables; never invent stats, star counts or testimonials.
 - Honor `prefers-reduced-motion`: no ticking loops, static finished terminal frame.
 - Keep contrast at 4.5:1+, touch targets 44px, no horizontal scroll from 360px, files under ~300 lines.
-- `GITHUB_TOKEN` (Vercel env, optional, no scopes) only raises the API rate limit. Never prefix it `PUBLIC_`.
+- The build's `GITHUB_TOKEN` (Actions-provided) only raises the API rate limit. Never prefix it `PUBLIC_`.
 - Conventional Commits; branch off `main`; commit and push only when asked.
 
 ## Local-only files

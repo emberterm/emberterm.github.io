@@ -1,7 +1,7 @@
 // Single source of truth for the release shown on the site. Resolved once at
 // build time from the latest GitHub release, so visitors make no extra request.
-// Redeploy after each release (e.g. a Vercel deploy hook fired from the
-// emberterm release workflow) to pick up the new version.
+// The emberterm Release workflow dispatches `release-published` to this repo's
+// Deploy workflow, which rebuilds the site and picks up the new version.
 export const REPO_URL = 'https://github.com/emberterm/emberterm';
 
 // Used only when the GitHub API is unreachable (offline builds, rate limits).
