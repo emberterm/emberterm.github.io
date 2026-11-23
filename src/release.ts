@@ -5,7 +5,7 @@
 export const REPO_URL = 'https://github.com/emberterm/emberterm';
 
 // Used only when the GitHub API is unreachable (offline builds, rate limits).
-const FALLBACK_VERSION = '1.0.0';
+const FALLBACK_VERSION = '1.3.0';
 
 async function latestRelease(): Promise<{ version: string; sizes: Map<string, number> }> {
   const headers: Record<string, string> = { Accept: 'application/vnd.github+json' };
