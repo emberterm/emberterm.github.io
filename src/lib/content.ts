@@ -1,23 +1,23 @@
 // Copy is final (see design/Main.dc.html); edit text here, not in components.
 export const features = [
-  { n: '01', title: 'Session restore', body: 'Closing and reopening brings back every tab, split, title and folder.' },
+  { n: '01', title: 'Session restore', body: "Closing and reopening brings back every tab, split, title and folder, plus each tab's last 10 commands. Press Up to recall them. Window size and position come back too." },
   { n: '02', title: 'Splits', body: 'Side by side or stacked, with any shell in each pane.' },
-  { n: '03', title: 'Tab status', body: 'A dot marks a tab that is running a command or has new output. Closing a busy tab asks first.' },
-  { n: '04', title: 'Copy, paste, find', body: 'Ctrl+C with a selection, Ctrl+V, a right-click menu, and Ctrl+Shift+F to search the scrollback.' },
-  { n: '05', title: 'Command palette', body: 'Ctrl+Shift+P for tabs, profiles, splits and themes.' },
-  { n: '06', title: 'Status bar', body: 'Shell, folder, git branch and changes, size and clock at a glance.' },
-  { n: '07', title: 'Window memory', body: 'Size, position and maximized state come back too.' },
-  { n: '08', title: 'One-click updates', body: 'Settings, About, Check for updates. Downloads are verified against the project signing key.' },
+  { n: '03', title: 'Markdown preview', body: 'Ctrl+click a .md name in the output, or press Ctrl+Shift+M, to read the file rendered beside the terminal. It reloads when the file changes.' },
+  { n: '04', title: 'Tabs you can manage', body: 'Drag to reorder and Duplicate from the right-click menu. A dot marks a tab that is running a command or has new output, and closing a busy tab asks first.' },
+  { n: '05', title: 'Copy, paste, find', body: 'Ctrl+C with a selection, Ctrl+V, a right-click menu, and Ctrl+Shift+F to search the scrollback.' },
+  { n: '06', title: 'Command palette', body: 'Ctrl+Shift+P for tabs, profiles, splits, themes and the Markdown preview.' },
+  { n: '07', title: 'Status bar', body: 'Shell, folder, git branch and changes, size and clock at a glance.' },
+  { n: '08', title: 'Updates that ask first', body: 'Check for updates shows what changed in every release since yours, and installs only when you click Install. Downloads are verified against the project signing key.' },
 ];
 
 export const hood = [
   { title: 'Clipboard is opt-in', body: 'Programs cannot set your clipboard unless you turn it on, so text from a hostile file or host cannot silently replace what you copied.' },
   { title: 'Hardened git calls', body: 'The status bar runs git without repository locks or fsmonitor, and never in a network path or missing folder.' },
-  { title: 'Content Security Policy', body: 'The app window ships with a CSP, and profile ids are restricted so they cannot reach outside the profiles folder.' },
+  { title: 'Content Security Policy', body: 'The app window ships with a CSP. Markdown from a file is sanitized and remote images are not loaded, and profile ids are restricted so they cannot reach outside the profiles folder.' },
   { title: 'Pinned release pipeline', body: 'Workflow actions are pinned to commit SHAs and kept current by Dependabot.' },
 ];
 
-const words = ['Git Bash', 'WSL', 'PowerShell', 'cmd', 'session restore', 'split panes', 'command palette', 'VS Code themes', 'no telemetry', 'MIT licensed'];
+const words = ['Git Bash', 'WSL', 'PowerShell', 'cmd', 'session restore', 'split panes', 'command palette', 'Markdown preview', 'VS Code themes', 'no telemetry', 'MIT licensed'];
 // Doubled so the -50% translate loops without a visible jump.
 export const ticker = [...words, ...words];
 
