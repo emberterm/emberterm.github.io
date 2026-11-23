@@ -1,5 +1,5 @@
 ---
-import { WIN_URL, MSI_URL, MAC_URL, REPO_URL } from '../release';
+import { WIN_URL, MSI_URL, MAC_URL } from '../release';
 ---
 <section id="install" class="wrap">
   <div class="rv">
@@ -34,16 +34,11 @@ pnpm install
 pnpm dev</pre>
     </div>
   </div>
-  <div class="rv policy" id="code-signing-policy">
-    <h3>Code signing policy</h3>
-    <p>Windows installers are not code-signed yet, so SmartScreen may warn on first run. EmberTerm is applying for free code signing provided by SignPath.io, certificate by SignPath Foundation. If the application is accepted, this policy applies to the Windows installers:</p>
-    <ul>
-      <li>Free code signing provided by <a href="https://signpath.io">SignPath.io</a>, certificate by <a href="https://signpath.org">SignPath Foundation</a>.</li>
-      <li><b>Authors, reviewers and approvers:</b> the EmberTerm maintainers (<a href="https://github.com/orgs/emberterm/people?query=role%3Aowner">owners</a>).</li>
-      <li><b>What is signed:</b> only installers built by the <a href={`${REPO_URL}/blob/main/.github/workflows/release.yml`}>Release workflow</a> from a version tag, and only after a maintainer approves the signing request for that release.</li>
-      <li><b>Privacy:</b> EmberTerm has no telemetry and sends nothing about you. Check for updates asks GitHub for the latest release and its notes; links open only when you click them.</li>
-    </ul>
-    <p>macOS builds are ad-hoc signed and not notarized, because notarization needs a paid Apple Developer Program membership.</p>
+  <div class="rv policy" id="code-signing">
+    <h3>Code signing</h3>
+    <p>Windows installers are not code-signed, so SmartScreen may warn on first run. macOS builds are ad-hoc signed and not notarized, because notarization needs a paid Apple Developer Program membership. SignPath Foundation's free signing for open source declined the project because it needs more public visibility first, and it may be retried later.</p>
+    <p>Updates are checked against the project's own signing key, whatever the operating system says about the installer.</p>
+    <p>Privacy: EmberTerm has no telemetry and sends nothing about you. Check for updates asks GitHub for the latest release and its notes; links open only when you click them.</p>
   </div>
 </section>
 <style>
@@ -57,8 +52,5 @@ pnpm dev</pre>
   code { font-family: var(--font-mono); font-size: 13px; color: var(--text); overflow-wrap: anywhere; }
   .policy { margin-top: 48px; max-width: 760px; display: flex; flex-direction: column; gap: 12px; }
   .policy h3 { font-size: 20px; }
-  .policy ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; color: var(--muted); }
-  .policy b { color: var(--text); font-weight: 600; }
-  .policy a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
   pre { margin: 0; font-family: var(--font-mono); font-size: 13px; line-height: 1.7; color: var(--text); background: var(--bg); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 16px; overflow-x: auto; }
 </style>
