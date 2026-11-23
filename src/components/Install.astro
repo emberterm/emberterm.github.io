@@ -19,7 +19,8 @@ import { WIN_URL, MSI_URL, MAC_URL, REPO_URL } from '../release';
     <div class="card pad">
       <h3>macOS</h3>
       <p>A universal build that runs on Apple silicon and Intel.</p>
-      <p>The app is ad-hoc signed and not notarized, so macOS may ask you to confirm the first launch.</p>
+      <p>The app is not notarized, so macOS blocks the first launch, once. Try to open it, then go to System Settings, Privacy &amp; Security, scroll to Security and click Open Anyway.</p>
+      <p>On macOS 15 and later, right-click and Open no longer works. In a terminal, <code>xattr -dr com.apple.quarantine /Applications/EmberTerm.app</code> clears the block too.</p>
       <div class="acts">
         <a class="btn btn-p btn-md" href={MAC_URL}>Download .dmg</a>
       </div>
@@ -53,6 +54,7 @@ pnpm dev</pre>
   h3 { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; }
   p { font-size: 15px; color: var(--muted); }
   .acts { display: flex; flex-wrap: wrap; gap: 12px; margin-top: auto; padding-top: 8px; }
+  code { font-family: var(--font-mono); font-size: 13px; color: var(--text); overflow-wrap: anywhere; }
   .policy { margin-top: 48px; max-width: 760px; display: flex; flex-direction: column; gap: 12px; }
   .policy h3 { font-size: 20px; }
   .policy ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; color: var(--muted); }
